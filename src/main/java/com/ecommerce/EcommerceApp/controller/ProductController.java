@@ -96,7 +96,8 @@ public class ProductController {
              throw new RuntimeException(e);
          }
    }
-
+   
+    @GetMapping("/product/search")
    public ResponseEntity<List<Product>> searchProduct(@RequestParam("keyword") String keyword) {
        List<Product> products = service.searchProduct(keyword);
        return new ResponseEntity<>(products, HttpStatus.OK);
