@@ -60,4 +60,8 @@ public class ProductService {
 
         return null;
     }
+
+    public List<Product> searchProduct(String keyword) {
+        return repo.searchProduct(keyword);
+    }
 }

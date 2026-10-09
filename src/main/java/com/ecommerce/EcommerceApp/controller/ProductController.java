@@ -15,12 +15,12 @@ import java.util.List;
 @RequestMapping("/api")
 public class ProductController {
 
-    private final model.Product product_1;
-    private final model.Product product;
+    private final Product product_1;
+    private final Product product;
     @Autowired
     private ProductService service;
 
-    ProductController(model.Product product, model.Product product_1) {
+    ProductController(Product product, Product product_1) {
         this.product = product;
         this.product_1 = product_1;
     }
@@ -95,5 +95,10 @@ public class ProductController {
          } catch (Exception e) {
              throw new RuntimeException(e);
          }
+   }
+
+   public ResponseEntity<List<Product>> searchProduct(@RequestParam("keyword") String keyword) {
+       List<Product> products = service.searchProduct(keyword);
+       return new ResponseEntity<>(products, HttpStatus.OK);
    }
 }
